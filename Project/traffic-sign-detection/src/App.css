@@ -1,0 +1,27 @@
+.box{
+height: 900px;
+background-color: grey;
+margin: 100px;
+padding: 10px;
+border: 2px solid black;
+border-radius: 25px;
+}
+
+.traffic-sign-image {
+border: 2px solid black;
+margin-left: 500px;
+
+}
+
+.btn::-webkit-file-upload-button{
+display:none;
+}
+
+.btn::file-selector-button{
+display:none;
+}
+
+.traffic-sign-image{
+height:500px;
+width:500px;
+}
