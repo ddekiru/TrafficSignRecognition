@@ -11,6 +11,36 @@ function App() {
       const reader = new FileReader();
 
       reader.onload = (e) => {
+
+        const formData = new FormData();
+        formData.append('image', file);
+        console.log(file);
+        
+        // Make a POST request using the Fetch API
+        fetch('http://127.0.0.1:5000/detect_traffic_sign', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.blob();
+          } else {
+            throw new Error('Failed to fetch');
+          }
+        })
+        .then(blob => {
+          // Create a URL for the blob data
+          const url = window.URL.createObjectURL(blob);
+      
+          // You can use the URL to set the source of an image element
+          const imageElement = document.getElementById('imageId');
+          console.log(imageElement)
+          imageElement.src = url;
+        })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+
         setImageUrl(e.target.result);
       };
 
